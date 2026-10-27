@@ -1,60 +1,132 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.ts'
+import '@fontsource-variable/bricolage-grotesque';
+import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+import { initContactForm } from './contact-form';
+import { initLanguage, onLanguageChange } from './i18n';
+import { renderProjects } from './projects';
 
-<div class="ticks"></div>
+// Lets CSS know JavaScript is running (e.g. to collapse the mobile menu).
+document.documentElement.classList.add('js');
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+/* ---------- Mobile navigation ---------- */
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+function initMobileNav(): void {
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu = document.querySelector<HTMLElement>('#nav-menu');
+  if (!toggle || !menu) return;
+
+  const desktopQuery = window.matchMedia('(min-width: 50rem)');
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+
+  function setOpen(open: boolean): void {
+    toggle!.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('nav-open', open);
+  }
+
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+  // Close after choosing a link, so the visitor sees the section.
+  menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen()) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Close when clicking or tapping outside the header.
+  document.addEventListener('click', (event) => {
+    if (isOpen() && !(event.target as Element).closest('.site-header')) setOpen(false);
+  });
+
+  desktopQuery.addEventListener('change', () => setOpen(false));
+}
+
+/* ---------- Header: border on scroll + current section ---------- */
+
+function initHeader(): void {
+  const header = document.querySelector<HTMLElement>('.site-header');
+  if (!header) return;
+
+  const updateScrolled = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  updateScrolled();
+  window.addEventListener('scroll', updateScrolled, { passive: true });
+
+  // Highlight the nav link of the section currently in view.
+  const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-list a'));
+  const sections = navLinks
+    .map((link) => document.querySelector<HTMLElement>(link.hash))
+    .filter((section): section is HTMLElement => section !== null);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.toggle('is-active', link.hash === `#${entry.target.id}`));
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px' },
+  );
+  sections.forEach((section) => observer.observe(section));
+}
+
+/* ---------- Hero card: Design / Code switch ---------- */
+
+function initHeroCard(): void {
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-view]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-view-panel]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const view = button.dataset.view;
+      buttons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+      panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.viewPanel === view));
+    });
+  });
+}
+
+/* ---------- Gentle fade-in when sections scroll into view ---------- */
+
+function initRevealOnScroll(): void {
+  const elements = document.querySelectorAll<HTMLElement>('.reveal');
+  if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+  // Added here (not in HTML) so content never stays hidden if this script fails.
+  document.documentElement.classList.add('reveal-enabled');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -10% 0px' },
+  );
+  elements.forEach((element) => observer.observe(element));
+}
+
+/* ---------- Start ---------- */
+
+initLanguage();
+
+const projectGrid = document.querySelector<HTMLElement>('#project-grid');
+if (projectGrid) {
+  renderProjects(projectGrid);
+  onLanguageChange(() => renderProjects(projectGrid));
+}
+
+initMobileNav();
+initHeader();
+initHeroCard();
+initRevealOnScroll();
+initContactForm();
+
+document.querySelectorAll('[data-current-year]').forEach((element) => {
+  element.textContent = String(new Date().getFullYear());
+});

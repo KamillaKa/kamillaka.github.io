@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <!-- Placeholder: replace with a real screenshot (1200 × 750 px, PNG/JPG/WebP) -->
+  <rect width="1200" height="750" fill="#f3eee6"/>
+  <rect x="120" y="90" width="960" height="600" rx="24" fill="#fff"/>
+  <rect x="120" y="90" width="220" height="600" rx="24" fill="#1c1a22"/>
+  <rect x="300" y="90" width="40" height="600" fill="#1c1a22"/>
+  <rect x="160" y="140" width="120" height="20" rx="10" fill="#5b3fc4"/>
+  <rect x="160" y="200" width="140" height="14" rx="7" fill="#57525f"/>
+  <rect x="160" y="236" width="110" height="14" rx="7" fill="#57525f"/>
+  <rect x="160" y="272" width="130" height="14" rx="7" fill="#57525f"/>
+  <rect x="390" y="140" width="300" height="30" rx="8" fill="#1c1a22"/>
+  <rect x="390" y="210" width="200" height="120" rx="16" fill="#ebe5fb"/>
+  <rect x="610" y="210" width="200" height="120" rx="16" fill="#ebe5fb"/>
+  <rect x="830" y="210" width="200" height="120" rx="16" fill="#ebe5fb"/>
+  <rect x="390" y="360" width="640" height="280" rx="16" fill="#faf7f2"/>
+  <polyline points="420,600 520,520 620,560 720,450 820,480 920,400 1000,420" fill="none" stroke="#5b3fc4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="735" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#45309b">Project screenshot placeholder</text>
+</svg>
