@@ -1,4 +1,5 @@
-import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/fraunces/wght.css';
+import '@fontsource-variable/fraunces/wght-italic.css';
 import './style.css';
 
 import { initContactForm } from './contact-form';

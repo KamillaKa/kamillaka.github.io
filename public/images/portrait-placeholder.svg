@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" width="480" height="560">
   <!-- Placeholder: replace with your own photo (about 480 × 560 px or larger, same 6:7 ratio) -->
-  <rect width="480" height="560" fill="#ebe5fb"/>
-  <circle cx="240" cy="215" r="88" fill="#d8ccfa"/>
-  <path d="M84 560c12-108 76-178 156-178s144 70 156 178z" fill="#d8ccfa"/>
-  <text x="240" y="520" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#45309b">Your photo here</text>
+  <rect width="480" height="560" fill="#2a2427"/>
+  <circle cx="240" cy="215" r="88" fill="#6e3a4d"/>
+  <path d="M84 560c12-108 76-178 156-178s144 70 156 178z" fill="#6e3a4d"/>
+  <text x="240" y="520" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#f7d6e0">Your photo here</text>
 </svg>

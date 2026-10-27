@@ -60,7 +60,7 @@ const en = {
   'about.factFocus': 'Focus',
   'about.factFocusValue': 'Frontend & UI/UX',
   'about.factLocation': 'Based in',
-  'about.factLocationValue': '[Your city], Finland',
+  'about.factLocationValue': 'Espoo, Finland',
   'about.factLanguages': 'Languages',
   'about.factLanguagesValue': 'Finnish, English',
 
@@ -93,7 +93,7 @@ const en = {
   // Education
   'education.label': 'Education',
   'education.title': 'Studies',
-  'education.dates': '20XX – 20XX (expected)',
+  'education.dates': '2022 – 2026 (expected)',
   'education.school': 'Metropolia University of Applied Sciences',
   'education.degree': 'Bachelor of Engineering, Information and Communication Technology',
   'education.specialization': 'Specialization: Digital Media and Web Technologies',
@@ -183,7 +183,7 @@ const fi: Record<TranslationKey, string> = {
   'about.factFocus': 'Painopiste',
   'about.factFocusValue': 'Frontend ja UI/UX',
   'about.factLocation': 'Sijainti',
-  'about.factLocationValue': '[Kaupunkisi], Suomi',
+  'about.factLocationValue': 'Espoo, Suomi',
   'about.factLanguages': 'Kielet',
   'about.factLanguagesValue': 'suomi, englanti',
 
@@ -213,7 +213,7 @@ const fi: Record<TranslationKey, string> = {
 
   'education.label': 'Koulutus',
   'education.title': 'Opinnot',
-  'education.dates': '20XX – 20XX (arvioitu)',
+  'education.dates': '2022 – 2026 (arvioitu)',
   'education.school': 'Metropolia Ammattikorkeakoulu',
   'education.degree': 'Insinööri (AMK), tieto- ja viestintätekniikka',
   'education.specialization': 'Suuntautuminen: digitaalinen media ja verkkoteknologiat',

@@ -2,26 +2,29 @@
    Design tokens: change these to restyle the whole site.
    ========================================================= */
 :root {
-  /* Colors */
-  --color-bg: #faf7f2; /* warm off-white page background */
-  --color-bg-tinted: #f3eee6; /* alternating section background */
-  --color-surface: #ffffff; /* cards */
-  --color-text: #1c1a22;
-  --color-text-muted: #57525f;
-  --color-border: #e3dcd0;
-  --color-border-strong: #c9c0b2;
+  color-scheme: dark; /* dark native scrollbars and form controls */
 
-  --color-accent: #5b3fc4; /* main accent (lavender-violet) */
-  --color-accent-strong: #45309b; /* hover / text on soft accent */
-  --color-accent-soft: #ebe5fb; /* tag backgrounds, highlights */
-  --color-accent-highlight: #d8ccfa; /* marker highlight in the hero */
-  --color-on-accent: #ffffff;
+  /* Colors (all text colors meet WCAG AA contrast on the backgrounds below) */
+  --color-bg: #1b1819; /* warm charcoal page background */
+  --color-bg-tinted: #211d1f; /* alternating section background */
+  --color-surface: #272225; /* cards, slightly lighter than the page */
+  --color-text: #f5efeb; /* off-white */
+  --color-text-muted: #b8adac;
+  --color-border: #3a3236;
+  --color-border-strong: #56494f;
 
-  --color-success: #1f6b4a;
-  --color-error: #b3261e;
+  --color-accent: #e8789b; /* raspberry / dusty pink: buttons, links, highlights */
+  --color-accent-strong: #f4a3bb; /* hover state (lighter on dark backgrounds) */
+  --color-accent-pale: #f7d6e0; /* pale pink: soft accents & decorative details */
+  --color-accent-soft: rgb(232 120 155 / 0.13); /* tinted backgrounds, tags */
+  --color-accent-muted: #6e3a4d; /* decorative shapes, text selection */
+  --color-on-accent: #1b1819; /* text on pink buttons */
+
+  --color-success: #8fd6b0;
+  --color-error: #ff9d92;
 
   /* Typography */
-  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
 
@@ -53,7 +56,7 @@
   --radius-m: 0.875rem;
   --radius-l: 1.5rem;
   --radius-full: 999px;
-  --shadow-card: 0 1px 2px rgb(28 26 34 / 0.04), 0 12px 32px -20px rgb(45 30 110 / 0.25);
+  --shadow-card: 0 24px 48px -28px rgb(0 0 0 / 0.7);
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
   --duration: 200ms;
 }
@@ -95,9 +98,9 @@ h2,
 h3 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 560;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   text-wrap: balance;
   /* Long Finnish words must never cause horizontal scrolling on phones */
   overflow-wrap: break-word;
@@ -173,7 +176,7 @@ main:focus {
 }
 
 ::selection {
-  background: var(--color-accent-highlight);
+  background: var(--color-accent-muted);
   color: var(--color-text);
 }
 
@@ -326,14 +329,14 @@ main:focus {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgb(250 247 242 / 0.92);
+  background: rgb(27 24 25 / 0.94);
   border-bottom: 1px solid transparent;
   transition: border-color var(--duration) var(--ease-out);
 }
 
 @supports (backdrop-filter: blur(1px)) {
   .site-header {
-    background: rgb(250 247 242 / 0.8);
+    background: rgb(27 24 25 / 0.8);
     backdrop-filter: blur(10px);
   }
 }
@@ -357,8 +360,8 @@ main:focus {
   color: var(--color-text);
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 560;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
@@ -366,21 +369,26 @@ main:focus {
   color: var(--color-text);
 }
 
+/* Thin pink ring with an italic serif initial */
 .logo-mark {
   display: grid;
   place-items: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 0.6rem;
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-  font-size: 1.05rem;
-  transform: rotate(-6deg);
-  transition: transform var(--duration) var(--ease-out);
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  color: var(--color-accent-pale);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1;
+  transition:
+    background-color var(--duration) var(--ease-out),
+    color var(--duration) var(--ease-out);
 }
 
 .logo:hover .logo-mark {
-  transform: rotate(0deg);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .nav-list {
@@ -576,7 +584,7 @@ main:focus {
     padding: var(--space-m) var(--gutter) var(--space-l);
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 16px 24px -16px rgb(28 26 34 / 0.18);
+    box-shadow: 0 16px 24px -16px rgb(0 0 0 / 0.6);
   }
 
   .js .nav-toggle[aria-expanded='true'] + .nav-menu {
@@ -624,9 +632,9 @@ main:focus {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: radial-gradient(circle at 1px 1px, var(--color-border-strong) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--color-border) 1px, transparent 0);
   background-size: 26px 26px;
-  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.7), transparent 85%);
+  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.9), transparent 85%);
 }
 
 .hero-inner {
@@ -660,8 +668,8 @@ main:focus {
   width: 0.55rem;
   height: 0.55rem;
   border-radius: 50%;
-  background: #2f9e6b;
-  box-shadow: 0 0 0 3px rgb(47 158 107 / 0.18);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
 .hero-title {
@@ -671,27 +679,24 @@ main:focus {
 
 .hero-greeting {
   font-size: var(--text-xl);
-  font-weight: 600;
-  color: var(--color-accent);
-  letter-spacing: -0.01em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent-pale);
 }
 
 .hero-tagline {
   font-size: var(--text-3xl);
-  font-weight: 750;
-  letter-spacing: -0.035em;
-  line-height: 1.04;
+  font-weight: 520;
+  letter-spacing: -0.025em;
+  line-height: 1.06;
 }
 
-/* Hand-highlighter effect behind one word */
+/* One word in italic pink with a thin hand-drawn-style underline */
 .highlight {
-  padding-inline: 0.08em;
-  background: linear-gradient(
-    transparent 58%,
-    var(--color-accent-highlight) 58%,
-    var(--color-accent-highlight) 90%,
-    transparent 90%
-  );
+  font-style: italic;
+  font-weight: 450;
+  color: var(--color-accent);
+  background: linear-gradient(var(--color-accent-pale), var(--color-accent-pale)) left 92% / 100% 1.5px no-repeat;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
@@ -712,8 +717,33 @@ main:focus {
 
 /* --- Interactive design/code card --- */
 .hero-visual {
+  position: relative;
   display: flex;
   justify-content: center;
+}
+
+/* Two small decorative stars around the card */
+.hero-visual::before,
+.hero-visual::after {
+  content: '✦';
+  position: absolute;
+  z-index: 1;
+  color: var(--color-accent-pale);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hero-visual::before {
+  top: -1.25rem;
+  right: 8%;
+  font-size: 1.5rem;
+}
+
+.hero-visual::after {
+  bottom: -0.75rem;
+  left: 6%;
+  font-size: 0.9rem;
+  color: var(--color-accent);
 }
 
 .hero-card {
@@ -787,9 +817,8 @@ main:focus {
 }
 
 .view-switch button[aria-pressed='true'] {
-  background: var(--color-surface);
-  color: var(--color-accent-strong);
-  box-shadow: 0 1px 3px rgb(28 26 34 / 0.12);
+  background: var(--color-border);
+  color: var(--color-accent-pale);
 }
 
 /* Both panels sit in the same grid cell, so the card never changes size */
@@ -868,7 +897,7 @@ main:focus {
   height: 1.5rem;
   margin-top: var(--space-xs);
   border-radius: var(--radius-full);
-  background: var(--color-accent-highlight);
+  background: var(--color-accent-muted);
 }
 
 .wf-cards {
@@ -898,7 +927,7 @@ main:focus {
 }
 
 .tok-str {
-  color: #1f6b4a;
+  color: var(--color-accent-pale);
 }
 
 /* =========================================================
@@ -930,13 +959,20 @@ main:focus {
   text-transform: uppercase;
 }
 
-/* Small line after the label: a recurring detail across the site */
+/* Star before and thin line after the label: a recurring detail across the site */
+.section-label::before {
+  content: '✦';
+  color: var(--color-accent-pale);
+  font-size: 0.85em;
+  letter-spacing: 0;
+}
+
 .section-label::after {
   content: '';
   width: 2.5rem;
-  height: 2px;
+  height: 1px;
   background: currentColor;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .section-number {
@@ -995,7 +1031,7 @@ main:focus {
   content: '';
   position: absolute;
   inset: 0;
-  border: 2px solid var(--color-accent);
+  border: 1px solid var(--color-accent-pale);
   border-radius: var(--radius-l);
   transform: translate(10px, 10px);
 }
@@ -1356,8 +1392,8 @@ main:focus {
 .contact-email {
   display: inline-block;
   font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 650;
+  font-size: clamp(1.125rem, 0.85rem + 1.2vw, 1.75rem);
+  font-weight: 500;
   letter-spacing: -0.01em;
   overflow-wrap: anywhere; /* long addresses won't overflow on phones */
 }

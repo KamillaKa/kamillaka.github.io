@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
   <!-- Placeholder: replace with a real screenshot (1200 × 750 px, PNG/JPG/WebP) -->
-  <rect width="1200" height="750" fill="#ebe5fb"/>
-  <rect x="300" y="70" width="270" height="560" rx="36" fill="#1c1a22"/>
-  <rect x="316" y="86" width="238" height="528" rx="26" fill="#fff"/>
-  <rect x="340" y="120" width="120" height="16" rx="8" fill="#1c1a22"/>
-  <rect x="340" y="160" width="190" height="150" rx="14" fill="#d8ccfa"/>
-  <rect x="340" y="330" width="170" height="12" rx="6" fill="#e3dcd0"/>
-  <rect x="340" y="354" width="130" height="12" rx="6" fill="#e3dcd0"/>
-  <rect x="340" y="540" width="190" height="44" rx="22" fill="#5b3fc4"/>
-  <rect x="630" y="70" width="270" height="560" rx="36" fill="#1c1a22"/>
-  <rect x="646" y="86" width="238" height="528" rx="26" fill="#faf7f2"/>
-  <circle cx="765" cy="220" r="60" fill="#5b3fc4" opacity=".3"/>
-  <rect x="670" y="320" width="190" height="16" rx="8" fill="#1c1a22"/>
-  <rect x="670" y="356" width="190" height="56" rx="12" fill="#fff" stroke="#e3dcd0" stroke-width="3"/>
-  <rect x="670" y="426" width="190" height="56" rx="12" fill="#fff" stroke="#e3dcd0" stroke-width="3"/>
-  <text x="600" y="700" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#45309b">Project screenshot placeholder</text>
+  <rect width="1200" height="750" fill="#2a2427"/>
+  <rect x="300" y="70" width="270" height="560" rx="36" fill="#4a4145"/>
+  <rect x="316" y="86" width="238" height="528" rx="26" fill="#211d1f"/>
+  <rect x="340" y="120" width="120" height="16" rx="8" fill="#e9dfdb"/>
+  <rect x="340" y="160" width="190" height="150" rx="14" fill="#6e3a4d"/>
+  <rect x="340" y="330" width="170" height="12" rx="6" fill="#4a4145"/>
+  <rect x="340" y="354" width="130" height="12" rx="6" fill="#4a4145"/>
+  <rect x="340" y="540" width="190" height="44" rx="22" fill="#e8789b"/>
+  <rect x="630" y="70" width="270" height="560" rx="36" fill="#4a4145"/>
+  <rect x="646" y="86" width="238" height="528" rx="26" fill="#2a2427"/>
+  <circle cx="765" cy="220" r="60" fill="#e8789b" opacity=".3"/>
+  <rect x="670" y="320" width="190" height="16" rx="8" fill="#e9dfdb"/>
+  <rect x="670" y="356" width="190" height="56" rx="12" fill="#211d1f" stroke="#4a4145" stroke-width="3"/>
+  <rect x="670" y="426" width="190" height="56" rx="12" fill="#211d1f" stroke="#4a4145" stroke-width="3"/>
+  <text x="600" y="700" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#f7d6e0">Project screenshot placeholder</text>
 </svg>
