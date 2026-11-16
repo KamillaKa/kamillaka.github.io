@@ -52,9 +52,39 @@ function initHeader(): void {
   const header = document.querySelector<HTMLElement>('.site-header');
   if (!header) return;
 
-  const updateScrolled = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
-  updateScrolled();
-  window.addEventListener('scroll', updateScrolled, { passive: true });
+  let lastScrollY = window.scrollY;
+  let directionStartY = lastScrollY;
+  let lastDirection = 0;
+
+  const updateHeader = () => {
+    const scrollY = window.scrollY;
+    header.classList.toggle('is-scrolled', scrollY > 8);
+
+    if (scrollY <= 8) {
+      header.classList.remove('is-hidden');
+      lastDirection = 0;
+      directionStartY = scrollY;
+      lastScrollY = scrollY;
+      return;
+    }
+
+    const direction = Math.sign(scrollY - lastScrollY);
+    if (direction !== 0) {
+      if (direction !== lastDirection) directionStartY = lastScrollY;
+      lastDirection = direction;
+    }
+
+    if (Math.abs(scrollY - directionStartY) >= 8) {
+      const needsHeaderVisible = document.body.classList.contains('nav-open') || header.contains(document.activeElement);
+      header.classList.toggle('is-hidden', direction > 0 && !needsHeaderVisible);
+      directionStartY = scrollY;
+    }
+
+    lastScrollY = scrollY;
+  };
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 
   // Highlight the nav link of the section currently in view.
   const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-list a'));

@@ -8,7 +8,7 @@ import type { TranslationKey } from './translations';
  *   const FORM_ENDPOINT = 'https://formspree.io/f/abcdwxyz';
  * When this is empty, the form shows an honest "not connected" message.
  */
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT: string = 'https://formspree.io/f/xoedvnkw';
 
 type FormField = HTMLInputElement | HTMLTextAreaElement;
 type StatusType = 'info' | 'success' | 'error';

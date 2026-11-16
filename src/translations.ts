@@ -52,7 +52,7 @@ const en = {
   'about.p2':
     'I care about clean code, accessibility, and details that make a site feel easy to use. Right now I’m building my skills in TypeScript, UI/UX design, and modern frontend development.',
   'about.p3':
-    '[Placeholder: add something personal here, such as what got you into web development, a hobby, or what you’re currently learning.]',
+    'I enjoy building things for the web and seeing an idea develop from a simple concept into something that is actually usable. I’m especially interested in creating clear, visually appealing and user-friendly digital experiences. I like learning new technologies and improving both the technical and design side of my work.',
   'about.portraitAlt': 'Portrait placeholder. Replace with a photo of Kamilla.',
   'about.factsTitle': 'Quick facts',
   'about.factStudies': 'Studies',
@@ -98,7 +98,7 @@ const en = {
   'education.degree': 'Bachelor of Engineering, Information and Communication Technology',
   'education.specialization': 'Specialization: Digital Media and Web Technologies',
   'education.text':
-    '[Placeholder: mention relevant courses or study projects, for example web development, UI/UX design, databases, or digital media production.]',
+    'During my studies I have focused on web development and digital media. My studies have included web application development, UI/UX and user-centered design, databases, responsive web development and different areas of digital media. I have also gained experience through practical development and project-based coursework.',
 
   // Contact
   'contact.label': 'Contact',
@@ -175,7 +175,7 @@ const fi: Record<TranslationKey, string> = {
   'about.p2':
     'Minulle ovat tärkeitä siisti koodi, saavutettavuus ja yksityiskohdat, jotka tekevät sivustosta helppokäyttöisen. Tällä hetkellä kehitän osaamistani TypeScriptissä, UI/UX-suunnittelussa ja modernissa frontend-kehityksessä.',
   'about.p3':
-    '[Paikkamerkki: kerro tässä jotain henkilökohtaista, esimerkiksi miten kiinnostuit web-kehityksestä, harrastuksistasi tai mitä opettelet juuri nyt.]',
+    'Pidän verkkosivujen ja digitaalisten palveluiden rakentamisesta sekä siitä, miten alkuperäinen idea muuttuu vähitellen oikeasti toimivaksi kokonaisuudeksi. Olen erityisen kiinnostunut selkeiden, visuaalisesti miellyttävien ja helppokäyttöisten digitaalisten kokemusten suunnittelusta. Tykkään oppia uusia teknologioita ja kehittää sekä teknistä että visuaalista osaamistani.',
   'about.portraitAlt': 'Kuvan paikkamerkki. Korvaa Kamillan valokuvalla.',
   'about.factsTitle': 'Pikafaktat',
   'about.factStudies': 'Opinnot',
@@ -218,7 +218,7 @@ const fi: Record<TranslationKey, string> = {
   'education.degree': 'Insinööri (AMK), tieto- ja viestintätekniikka',
   'education.specialization': 'Suuntautuminen: digitaalinen media ja verkkoteknologiat',
   'education.text':
-    '[Paikkamerkki: mainitse olennaisia kursseja tai opintoprojekteja, esimerkiksi web-kehitys, UI/UX-suunnittelu, tietokannat tai digitaalisen median tuotanto.]',
+    'Olen suuntautunut web-kehitykseen ja digitaaliseen mediaan. Opintoihini on kuulunut muun muassa web-sovelluskehitystä, UI/UX- ja käyttäjäkeskeistä suunnittelua, tietokantoja, responsiivista web-kehitystä sekä digitaalisen median eri osa-alueita. Olen saanut käytännön kokemusta myös erilaisista kehitys- ja projektitöistä.',
 
   'contact.label': 'Yhteystiedot',
   'contact.title': 'Ollaan yhteydessä',

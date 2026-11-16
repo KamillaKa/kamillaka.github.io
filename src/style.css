@@ -331,7 +331,30 @@ main:focus {
   z-index: 50;
   background: rgb(27 24 25 / 0.94);
   border-bottom: 1px solid transparent;
-  transition: border-color var(--duration) var(--ease-out);
+  transition:
+    transform 450ms var(--ease-out),
+    border-color var(--duration) var(--ease-out);
+}
+
+.site-header.is-hidden {
+  transform: translateY(calc(-100% + 0.75rem));
+  transition-duration: 220ms, var(--duration);
+}
+
+.site-header.is-hidden::after {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 2rem;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  content: '';
+  transform: translateX(-50%);
+}
+
+.site-header.is-hidden:focus-within {
+  transform: translateY(0);
 }
 
 @supports (backdrop-filter: blur(1px)) {
@@ -1569,6 +1592,7 @@ main:focus {
   align-items: center;
   min-height: 2.75rem;
   color: var(--color-text);
+  text-decoration: none;
 }
 
 .footer-links a:hover {
